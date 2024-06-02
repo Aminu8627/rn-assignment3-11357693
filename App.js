@@ -9,6 +9,7 @@ import {
   ScrollView,
   FlatList,
 } from "react-native";
+import Icon from 'react-native-vector-icons/FontAwesome';
 import person from "./assets/person.png";
 import filter from "./assets/Filter.png";
 import exerciseImage from "./assets/young woman working online.png";
@@ -49,7 +50,8 @@ export default function App() {
 
       <View style={styles.searchBar}>
         <View style={styles.searchBox}>
-          <TextInput placeholder="search" value={Text} />
+        <Icon name="search" size={20} color="#888" style={styles.icon} />
+          <TextInput placeholder="search" value={Text}   />
         </View>
         <View style={styles.filterButton}>
           <Image source={filter} />
@@ -60,8 +62,8 @@ export default function App() {
         <Text style={styles.categoryHeaderContext}>Categories</Text>
       </View>
       <ScrollView style={styles.scrollArea}>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.categorySection}>
-          
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false} style={styles.categorySectionScroll}>
+          <View style={styles.categorySection}>
             <View style={styles.category1}>
               <Text style={styles.categoryTitle}>Exercises</Text>
               <Text>12 Tasks</Text>
@@ -85,7 +87,7 @@ export default function App() {
               <Text>12 Tasks</Text>
               <Image source={exerciseImage} />
             </View>
-          
+            </View>
         </ScrollView>
 
         <SectionList
@@ -120,12 +122,17 @@ const styles = StyleSheet.create({
   greetingMessage: {
     fontSize: 28,
   },
+  profile:{
+    backgroundColor:'#ffffff',
+    borderRadius:'50%'
+  },
   searchBar: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginVertical: 20,
   },
   searchBox: {
+    flexDirection:'row',
     backgroundColor: "#FBF9F7",
     borderRadius: 20,
     padding: 10,
@@ -151,10 +158,13 @@ const styles = StyleSheet.create({
     fontWeight: "700",
   },
 
-  categorySection: {
-    flexDirection: "row",
-    columnGap: "2",
+  categorySectionScroll: {
+    flex:1,
     padding: 10,
+  },
+  categorySection:{
+    flexDirection:'row',
+    columnGap:'20'
   },
   category1: {
     backgroundColor: "#fff",
